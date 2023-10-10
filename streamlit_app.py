@@ -1,8 +1,8 @@
 import streamlit
 import pandas
-# import request library
 import requests
 import snowflake.connector
+from urllib.error import URLERROR
 
 streamlit.title('My Mom\'s New Healthy Diner')
 # add header and text
@@ -44,6 +44,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
+
+# dont run anything past here while we troubleshoot
+streamlit.stop()
 
 # connect to snowflake and query
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
