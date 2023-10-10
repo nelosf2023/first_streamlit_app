@@ -1,5 +1,8 @@
 import streamlit
 import pandas
+# import request library
+import requests
+import snowflake.connector
 
 streamlit.title('My Mom\'s New Healthy Diner')
 # add header and text
@@ -33,8 +36,7 @@ streamlit.header("Fruityvice Fruit Advice!")
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
 
-# import request library
-import requests
+
 # add fruity api request
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
